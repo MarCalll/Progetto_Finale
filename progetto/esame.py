@@ -32,9 +32,5 @@ df_listings = df_listings.rename(columns={
     'number_of_reviews_ltm': 'Recensioni_Ultimi_12_Mesi'
 })
 
-correlation_matrix = df_listings.select_dtypes(include=["number"]).corr()
-plt.figure(figsize =(10,6))
-sns.heatmap(correlation_matrix, annot = True, cmap ="coolwarm", fmt = ".2f", linewidths =1)
-plt.show()
-print(df_listings)
+
 
