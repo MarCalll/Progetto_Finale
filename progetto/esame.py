@@ -32,5 +32,8 @@ df_listings = df_listings.rename(columns={
     'number_of_reviews_ltm': 'Recensioni_Ultimi_12_Mesi'
 })
 
-
+# Creiamo le colonne per le variabili dummies derivanti dalle variabili categoriali
+df_listings = pd.get_dummies(df_listings, columns=['Gruppo_Quartieri', 'Tipo_Stanza'])
+df_listings[df_listings.select_dtypes(include=['bool']).columns] = df_listings.select_dtypes(include=['bool']).astype(int)
+print(df_listings.info())
 
