@@ -1,39 +1,18 @@
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
+from AutoScoutCarData import load_car_scout,clean_car_scout
 
-# Carichiamo CSV
-df_listings = pd.read_csv("progetto/Turam/listings.csv")
-df_calendar = pd.read_csv("progetto/Turam/calendar.csv")
-df_reviews = pd.read_csv("progetto/Turam/reviews_scompressa.csv")
 
-# Puliamo i dataframe
-df_listings = df_listings.drop(columns=['license'])
-df_calendar['price'] = df_calendar['price'].str.replace("$", "").str.replace(",", "").astype(float)
+df = load_car_scout()
+df_clean = clean_car_scout(df)
 
-df_calendar_mean = df_calendar.groupby('listing_id')['price'].mean()
-df_listings['price'] = df_listings['id'].map(df_calendar_mean)
-df_listings = df_listings.drop(columns=['name','host_name','last_review','reviews_per_month','latitude','longitude'])
+print(df_clean.info())
+print(df_clean)
+print(df_clean.head())
 
-df_listings = df_listings.dropna(subset=['price'])
 
-# Rinominiamo le colonne
-df_listings = df_listings.rename(columns={
-    'id': 'ID_Annuncio',
-    'host_id': 'ID_Host',
-    'neighbourhood_group': 'Gruppo_Quartieri',
-    'neighbourhood': 'Quartiere',
-    'room_type': 'Tipo_Stanza',
-    'price': 'Prezzo_Per_Notte',
-    'minimum_nights': 'Notti_Minime',
-    'number_of_reviews': 'Totale_Recensioni',
-    'calculated_host_listings_count': 'Numero_Annunci_Host',
-    'availability_365': 'Disponibilità_365_Giorni',
-    'number_of_reviews_ltm': 'Recensioni_Ultimi_12_Mesi'
-})
-
-# Creiamo le colonne per le variabili dummies derivanti dalle variabili categoriali
-df_listings = pd.get_dummies(df_listings, columns=['Gruppo_Quartieri', 'Tipo_Stanza'])
-df_listings[df_listings.select_dtypes(include=['bool']).columns] = df_listings.select_dtypes(include=['bool']).astype(int)
-print(df_listings.info())
-
+# model = xgb.XGBRegressor(
+#     tree_method="hist",        # Use 'hist' for efficient training
+#     enable_categorical=True,   # Enable categorical support
+#     n_estimators=100,
+#     max_depth=6,
+#     learning_rate=0.1
+# )
