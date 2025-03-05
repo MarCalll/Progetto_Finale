@@ -8,7 +8,6 @@ print(df_clean.info())
 print(df_clean)
 print(df_clean.head())
 
-
 # model = xgb.XGBRegressor(
 #     tree_method="hist",        # Use 'hist' for efficient training
 #     enable_categorical=True,   # Enable categorical support
