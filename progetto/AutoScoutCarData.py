@@ -2,7 +2,7 @@ import pandas as pd
 
 def load_car_scout():
     df_auto_scout_car = pd.read_csv("progetto/auto_scout/auto_scout_car.csv")
-    df_auto_scout_car = df_auto_scout_car.dropna(subset=['make_model','vat'])
+    df_auto_scout_car = df_auto_scout_car.drop(columns=['make_model', 'vat','Comfort_Convenience','Entertainment_Media','Extras','Safety_Security'])
     return df_auto_scout_car
 
 def clean_car_scout(df):
