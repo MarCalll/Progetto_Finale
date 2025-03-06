@@ -2,10 +2,10 @@ import pandas as pd
 
 def load_car_scout():
     df_auto_scout_car = pd.read_csv("progetto/auto_scout/auto_scout_car.csv")
-    df_auto_scout_car = df_auto_scout_car.drop(columns=['make_model', 'vat','Comfort_Convenience','Entertainment_Media','Extras','Safety_Security'])
     return df_auto_scout_car
 
 def clean_car_scout(df):
+    df = df.drop(columns=['make_model', 'vat','Comfort_Convenience','Entertainment_Media','Extras','Safety_Security'])
     columns_to_convert = ['Upholstery_type', 'Paint_Type', 'Gearing_Type', 'Fuel', 'Drive_chain', 'body_type']
     df[columns_to_convert] = df[columns_to_convert].astype("category")
 
