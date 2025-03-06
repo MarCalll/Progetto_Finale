@@ -51,21 +51,7 @@ param_grid = {
     'colsample_bytree': [0.8, 1.0]  # Percentuale di feature usate per ogni albero
 }
 
-#iperparametri da testare 
-# param_grid = {
-#     'n_estimators': [50, 100, 200],  
-#     'learning_rate': [0.01, 0.1, 0.2],  
-#     'max_depth': [3, 5, 7],  
-#     'subsample': [0.8, 1.0],  
-#     'colsample_bytree': [0.8, 1.0],
-#     'gamma': [0, 0.1, 0.5, 1],
-#     'reg_alpha': [0, 0.1, 0.5, 1, 10],
-#     'reg_lambda': [0.1, 1, 10],
-#     'min_child_weight': [1, 3, 5, 7]
-# }
-
-xgb_regressor_grid = xgb.XGBRegressor(objective="reg:squarederror", random_state=42,tree_method="hist",enable_categorical=True,)
-grid_search = GridSearchCV(xgb_regressor_grid, param_grid, cv=3, scoring="r2", n_jobs=-1)
+grid_search = GridSearchCV(model, param_grid, cv=5, scoring="r2", n_jobs=-1)
 grid_search.fit(X_train, y_train)
 best_params = grid_search.best_params_
 
