@@ -76,40 +76,41 @@ def menu():
                 sceltaAnalisi = input("Seleziona un'analisi da eseguire: ")
 
                 if sceltaAnalisi == "1":
-                    finestra_descrizione_grafico("Violin plot dei km per tipo di cambio","Descrizione Violin plot dei km per tipo di cambio",plot_violin_km_by_gearing(df))
+                    finestra_descrizione_grafico("Violin plot dei km per tipo di cambio", "Il violin plot mostra la distribuzione del chilometraggio in base al tipo di cambio del veicolo.", plot_violin_km_by_gearing(df))
                 elif sceltaAnalisi == "2":
-                    finestra_descrizione_grafico("Istogramma dei km per anno","Descrizione Violin plot dei km per tipo di cambio",plot_histogram_km_per_year(df))
+                    finestra_descrizione_grafico("Istogramma dei km per anno", "L'istogramma mostra la distribuzione del chilometraggio per anno.", plot_histogram_km_per_year(df))
                 elif sceltaAnalisi == "3":
-                    finestra_descrizione_grafico("Istogramma del rapporto prezzo per cavalli","Descrizione Violin plot dei km per tipo di cambio",plot_histogram_price_per_hp(df))
+                    finestra_descrizione_grafico("Istogramma del rapporto prezzo per cavalli", "L'istogramma mostra la distribuzione del prezzo dei veicoli in funzione dei cavalli di potenza: generalmente, più alti sono i cavalli, più l'auto è costosa.", plot_histogram_price_per_hp(df))
                 elif sceltaAnalisi == "4":
-                    finestra_descrizione_grafico("Boxplot dei km per anno per tipo di carburante","Descrizione Violin plot dei km per tipo di cambio",plot_boxplot_fuel_km_per_year(df))
+                    finestra_descrizione_grafico("Boxplot dei km per anno per tipo di carburante", "Il boxplot evidenzia la distribuzione del chilometraggio per anno in base al tipo di carburante: si evidenzia una leggera prevalenza dei km effettuati con GAS, subito a seguire Diesel e benzina, con il dato minore riscontrato nell'elettrico.", plot_boxplot_fuel_km_per_year(df))
                 elif sceltaAnalisi == "5":
-                    finestra_descrizione_grafico("Matrice di correlazione","Descrizione Violin plot dei km per tipo di cambio",correlation_matrix(df))
+                    finestra_descrizione_grafico("Matrice di correlazione", "Questo grafico mostra la matrice di correlazione del dataset, evidenziando le relazioni tra le variabili numeriche.", correlation_matrix(df))
                 elif sceltaAnalisi == "6":
-                    finestra_descrizione_grafico("Line chart del prezzo medio per tipo di carburante","Descrizione Violin plot dei km per tipo di cambio",plot_line_avg_price_by_fuel(df))
+                    finestra_descrizione_grafico("Line chart del prezzo medio per tipo di carburante", "Il grafico a linee mostra l'andamento del prezzo medio in base al tipo di carburante: si nota un grande divario tra il prezzo dell'elettrico e quelli di benzina e diesel (che sono quasi pari).", plot_line_avg_price_by_fuel(df))
                 elif sceltaAnalisi == "7":
-                    finestra_descrizione_grafico("Boxplot del prezzo per tipo di cambio","Descrizione Violin plot dei km per tipo di cambio",plot_boxplot_gearing_price(df))
+                    finestra_descrizione_grafico("Boxplot del prezzo per tipo di cambio", "Il boxplot mostra la distribuzione dei prezzi in base al tipo di cambio del veicolo: si evince un leggero prezzo più basso per le auto con cambio manuale, mentre le auto con cambio automatico e semiautomatico sono leggermente più costose.", plot_boxplot_gearing_price(df))
                 elif sceltaAnalisi == "8":
-                    finestra_descrizione_grafico("Grafico a barre della distribuzione carburanti","Descrizione Violin plot dei km per tipo di cambio",plot_bar_fuel_distribution(df))
+                    finestra_descrizione_grafico("Grafico a barre della distribuzione carburanti", "Il grafico a barre mostra la distribuzione dei veicoli in base al tipo di carburante utilizzato: benzina e diesel in ampia maggioranza, l'elettrico è il meno utilizzato, probabilmente a causa dell'elevato costo.", plot_bar_fuel_distribution(df))
                 elif sceltaAnalisi == "9":
-                    finestra_descrizione_grafico("Grafico a torta del tipo di cambio","Descrizione Violin plot dei km per tipo di cambio",plot_pie_gearing_type(df))
+                    finestra_descrizione_grafico("Grafico a torta del tipo di cambio", "Il grafico a torta mostra le percentuali di macchine con il cambio manuale (poco più della metà), automatico (45%) e semiautomatico (poco più del 3%).", plot_pie_gearing_type(df))
                 elif sceltaAnalisi == "10":
-                    finestra_descrizione_grafico("Boxplot dei prezzi per tipo di carburante","Descrizione Violin plot dei km per tipo di cambio",plot_boxplot_fuel_price(df))
+                    finestra_descrizione_grafico("Boxplot dei prezzi per tipo di carburante", "Il boxplot mostra la distribuzione dei prezzi in base al tipo di carburante utilizzato: in media si nota che l'elettrico è il più costoso, mentre gli altri carburanti hanno prezzi più o meno simili.", plot_boxplot_fuel_price(df))
                 elif sceltaAnalisi == "11":
-                    finestra_descrizione_grafico("Grafico a barre dei modelli più venduti","Descrizione Violin plot dei km per tipo di cambio",plot_top_models_bar(df))
+                    finestra_descrizione_grafico("Grafico a barre dei modelli più venduti", "Il grafico a barre mostra i 10 modelli di auto più venduti. I modelli sono ordinati in base alla quantità di vendite: Audi A3 è il modello più venduto, A1 il meno venduto.", plot_top_models_bar(df))
                 elif sceltaAnalisi == "12":
-                    finestra_descrizione_grafico("Scatter plot tra età e chilometraggio","Descrizione Violin plot dei km per tipo di cambio",scatter_plot_eta_km(df))
+                    finestra_descrizione_grafico("Scatter plot tra età e chilometraggio", "Il grafico mostra la relazione tra età e chilometraggio di un veicolo. In genere, all'aumentare dell'età, il chilometraggio tende ad aumentare.", scatter_plot_eta_km(df))
                 elif sceltaAnalisi == "13":
-                    finestra_descrizione_grafico("Scatter plot tra età e prezzo","Descrizione Violin plot dei km per tipo di cambio",scatter_plot_eta_prezzo(df))
+                    finestra_descrizione_grafico("Scatter plot tra età e prezzo", "Il grafico mostra la relazione tra età e prezzo di un veicolo. In genere, all'aumentare dell'età, il prezzo tende a diminuire.", scatter_plot_eta_prezzo(df))
                 elif sceltaAnalisi == "14":
-                    finestra_descrizione_grafico("Scatter plot tra chilometraggio e prezzo","Descrizione Violin plot dei km per tipo di cambio",scatter_plot_km_prezzo(df))
+                    finestra_descrizione_grafico("Scatter plot tra chilometraggio e prezzo", "Il grafico mostra la relazione tra chilometraggio e prezzo di un veicolo. In genere, all'aumentare dei km, il prezzo tende a diminuire.", scatter_plot_km_prezzo(df))
                 elif sceltaAnalisi == "15":
-                    finestra_descrizione_grafico("Istogramma delle variabili numeriche","Descrizione Violin plot dei km per tipo di cambio",istogramma_numerico(df))
+                    finestra_descrizione_grafico("Istogramma delle variabili numeriche", "Istogramma che mostra la distribuzione delle variabili numeriche presenti in questo dataset, per evidenziare la frequenza dei valori.", istogramma_numerico(df))
                 elif sceltaAnalisi == "0":
                     print("Uscita dal programma.")
                     condizione = False
                 else:
                     print("Opzione non valida! Riprova.")
+
         elif scelta == "4":
             pulisci_console()
             predici_costo(crea_auto_input())
