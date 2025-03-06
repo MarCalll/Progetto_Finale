@@ -52,29 +52,35 @@ def carica_primo_modello():
     # print(f"Mean Squared Error: {mse}")
     # print(f"R² Score: {r2}")
 
-    # Grafico primo modello
-    plt.figure(figsize=(8,6))
-    plt.scatter(y_test, y_pred, color="blue", alpha=0.5, label="Previsioni")
-    plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], linestyle="--", color="red", label="Perfetta corrispondenza")
-    plt.xlabel("Valori Reali")
-    plt.ylabel("Valori Predetti")
-    plt.title("XGBoost - Previsioni vs. Valori Reali - Primo modello")
-    plt.legend()
-    plt.grid(True)
-    plt.show()
+    fig, axes = plt.subplots(3, 1, figsize=(8, 10))
 
-    xgb.plot_importance(model)
-    plt.title("Feature Importance - Primo modello")
-    plt.show()
+    # Grafico 1: Scatter plot delle previsioni
+    axes[0].scatter(y_test, y_pred, color="blue", alpha=0.5, label="Previsioni")
+    axes[0].plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], linestyle="--", color="red", label="Perfetta corrispondenza")
+    axes[0].set_xlabel("Valori Reali")
+    axes[0].set_ylabel("Valori Predetti")
+    axes[0].set_title("XGBoost - Previsioni vs. Valori Reali - Primo modello")
+    axes[0].legend()
+    axes[0].grid(True)
 
-    plt.figure(figsize=(10, 6))
-    sns.histplot(y_pred, bins=30, kde=True, color='skyblue')
-    plt.xlabel("Valori Predetti")
-    plt.ylabel("Frequenza")
-    plt.title("Distribuzione delle frequenze con KDE delle predizioni del primo modello")
-    plt.grid(alpha=0.3)
-    plt.show()
+    # Grafico 2: Feature Importance
+    xgb.plot_importance(model, ax=axes[1])
+    axes[1].set_title("Feature Importance - Primo modello")
 
+    # Grafico 3: Distribuzione delle frequenze delle predizioni
+    sns.histplot(y_pred, bins=30, kde=True, color='skyblue', ax=axes[2])
+    axes[2].set_xlabel("Valori Predetti")
+    axes[2].set_ylabel("Frequenza")
+    axes[2].set_title("Distribuzione delle frequenze con KDE delle predizioni del primo modello")
+    axes[2].grid(alpha=0.3)
+
+    # Ottimizza la disposizione dei grafici per evitare sovrapposizioni
+    plt.tight_layout()
+
+    # Mostra tutti i grafici
+    plt.show(block=False)
+    
+    
 def carica_secondo_modello():
 
     grid_search = GridSearchCV(model, param_grid, cv=5, scoring="r2", n_jobs=-1)
@@ -95,27 +101,33 @@ def carica_secondo_modello():
     # print(f"R² Score grid-search: {r2_best}")
 
     # Grafic1 secondo modello
-    plt.figure(figsize=(8,6))
-    plt.scatter(y_test, y_pred_best, color="blue", alpha=0.5, label="Previsioni")
-    plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], linestyle="--", color="red", label="Perfetta corrispondenza")
-    plt.xlabel("Valori Reali")
-    plt.ylabel("Valori Predetti")
-    plt.title("XGBoost - Previsioni vs. Valori Reali - Secondo modello")
-    plt.legend()
-    plt.grid(True)
-    plt.show()
+    fig, axes = plt.subplots(3, 1, figsize=(8, 10))
 
-    xgb.plot_importance(best_xgb)
-    plt.title("Feature Importance - Secondo modello")
-    plt.show()
+    # Grafico 1: Scatter plot delle previsioni del secondo modello
+    axes[0].scatter(y_test, y_pred_best, color="blue", alpha=0.5, label="Previsioni")
+    axes[0].plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], linestyle="--", color="red", label="Perfetta corrispondenza")
+    axes[0].set_xlabel("Valori Reali")
+    axes[0].set_ylabel("Valori Predetti")
+    axes[0].set_title("XGBoost - Previsioni vs. Valori Reali - Secondo modello")
+    axes[0].legend()
+    axes[0].grid(True)
 
-    plt.figure(figsize=(10, 6))
-    sns.histplot(y_pred_best, bins=30, kde=True, color='skyblue')
-    plt.xlabel("Valori Predetti")
-    plt.ylabel("Frequenza")
-    plt.title("Distribuzione delle frequenze con KDE delle predizioni del modello - Secondo modello")
-    plt.grid(alpha=0.3)
-    plt.show()
+    # Grafico 2: Feature Importance per il secondo modello
+    xgb.plot_importance(best_xgb, ax=axes[1])  # Assicurati di usare l'asse giusto
+    axes[1].set_title("Feature Importance - Secondo modello")
+
+    # Grafico 3: Distribuzione delle frequenze delle predizioni del secondo modello
+    sns.histplot(y_pred_best, bins=30, kde=True, color='skyblue', ax=axes[2])
+    axes[2].set_xlabel("Valori Predetti")
+    axes[2].set_ylabel("Frequenza")
+    axes[2].set_title("Distribuzione delle frequenze con KDE delle predizioni del modello - Secondo modello")
+    axes[2].grid(alpha=0.3)
+
+    # Ottimizza la disposizione dei grafici per evitare sovrapposizioni
+    plt.tight_layout()
+
+    # Mostra tutti i grafici
+    plt.show(block=False)
 
 def predici_costo(df):
     grid_search = GridSearchCV(model, param_grid, cv=5, scoring="r2", n_jobs=-1)
@@ -201,26 +213,33 @@ def carica_terzo_modello():
     # print(f"Mean Squared Error grid-search: {mse_best_reg}")
     # print(f"R² Score grid-search: {r2_best_reg}")
 
-    # Grafic1 terzo modello
-    plt.figure(figsize=(8,6))
-    plt.scatter(y_test, y_pred_best_reg, color="blue", alpha=0.5, label="Previsioni")
-    plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], linestyle="--", color="red", label="Perfetta corrispondenza")
-    plt.xlabel("Valori Reali")
-    plt.ylabel("Valori Predetti")
-    plt.title("XGBoost - Previsioni vs. Valori Reali - Terzo modello")
-    plt.legend()
-    plt.grid(True)
-    plt.show()
+    fig, axes = plt.subplots(3, 1, figsize=(10, 18))
 
-    xgb.plot_importance(best_xgb_reg)
-    plt.title("Feature Importance - Terzo modello")
-    plt.show()
+    # Grafico 1: Scatter plot delle previsioni del terzo modello
+    axes[0].scatter(y_test, y_pred_best_reg, color="blue", alpha=0.5, label="Previsioni")
+    axes[0].plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], linestyle="--", color="red", label="Perfetta corrispondenza")
+    axes[0].set_xlabel("Valori Reali")
+    axes[0].set_ylabel("Valori Predetti")
+    axes[0].set_title("XGBoost - Previsioni vs. Valori Reali - Terzo modello")
+    axes[0].legend()
+    axes[0].grid(True)
 
-    plt.figure(figsize=(10, 6))
-    sns.histplot(y_pred_best_reg, bins=30, kde=True, color='skyblue')
-    plt.xlabel("Valori Predetti")
-    plt.ylabel("Frequenza")
-    plt.title("Distribuzione delle frequenze con KDE delle predizioni del modello - Terzo modello")
-    plt.grid(alpha=0.3)
-    plt.show()
+    # Grafico 2: Feature Importance per il terzo modello
+    xgb.plot_importance(best_xgb_reg, ax=axes[1])  # Assicurati di usare l'asse giusto
+    axes[1].set_title("Feature Importance - Terzo modello")
+
+    # Grafico 3: Distribuzione delle frequenze delle predizioni del terzo modello
+    sns.histplot(y_pred_best_reg, bins=30, kde=True, color='skyblue', ax=axes[2])
+    axes[2].set_xlabel("Valori Predetti")
+    axes[2].set_ylabel("Frequenza")
+    axes[2].set_title("Distribuzione delle frequenze con KDE delle predizioni del modello - Terzo modello")
+    axes[2].grid(alpha=0.3)
+
+    # Ottimizza la disposizione dei grafici per evitare sovrapposizioni
+    plt.tight_layout()
+
+    # Mostra tutti i grafici
+    plt.show(block=False)
+    
+
 
