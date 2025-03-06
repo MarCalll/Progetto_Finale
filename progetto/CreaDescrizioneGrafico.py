@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import ttk
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-import Analisi_Unite_Con_Funzioni
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
