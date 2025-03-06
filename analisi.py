@@ -1,6 +1,9 @@
+import os
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+
+print(os.getcwd())
 
 df = pd.read_csv("progetto/auto_scout/auto_scout_car.csv")
 
@@ -26,6 +29,11 @@ print("\nAuto con il chilometraggio massimo:")
 print(df[df['km'] == df['km'].max()])
 print("\nAuto con il chilometraggio minimo:")
 print(df[df['km'] == df['km'].min()])
+
+# Calcolare il prezzo medio
+df["price"] = pd.to_numeric(df["price"], errors="coerce")
+prezzo_medio = df["price"].mean()
+print(f"Il prezzo medio delle auto è: {prezzo_medio:.2f} euro")
 
 # corelation matrix
 correlation_matrix = df_numeric.corr()
