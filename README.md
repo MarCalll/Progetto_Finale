@@ -80,40 +80,9 @@ Abbiamo scelto **XGBoost** per la sua efficienza e accuratezza nel trattare data
 
 ---
 
-## Come Eseguire il Progetto
-
-1. Clona il repository:
-
-   ```bash
-   git clone <URL_DEL_REPOSITORY>
-   cd <NOME_CARTELLA>
-   ```
-
-2. Crea un ambiente virtuale e installa le dipendenze:
-
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # (Windows: venv\Scripts\activate)
-   pip install -r requirements.txt
-   ```
-
-3. Esegui il training del modello:
-
-   ```bash
-   python train.py
-   ```
-
----
-
-## Conclusioni e Sviluppi Futuri
+## Conclusioni
 
 Abbiamo raggiunto l'obiettivo di creare un modello predittivo in grado di stimare il prezzo delle auto con **buona accuratezza**.
-
-### Possibili sviluppi futuri:
-
-- Ampliare il dataset per migliorare la **generalizzazione** del modello.
-- Esplorare **altri algoritmi** o approcci ensemble per aumentare la precisione.
-- Integrare **nuove variabili** che possano influenzare il prezzo.
 
 ---
 
