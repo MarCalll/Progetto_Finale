@@ -193,8 +193,8 @@ def plot_histogram_price_per_hp(df):
     df['price_per_hp'] = df.apply(lambda row: row['price'] / row['hp_kW'] if row['hp_kW'] > 0 else np.nan, axis=1)
     plt.figure(figsize=(10, 6))
     sns.histplot(df['price_per_hp'].dropna(), kde=True)
-    plt.title("Distribuzione del Rapporto Prezzo per Cavalli")
-    plt.xlabel("Prezzo per Cavalli")
+    plt.title("Distribuzione del Rapporto quantita auto per Cavalli")
+    plt.xlabel("Cavalli")
     return plt.gcf()
     
 
